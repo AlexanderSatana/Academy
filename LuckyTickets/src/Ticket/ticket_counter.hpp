@@ -3,7 +3,6 @@
 #include <vector>
 #include <memory>
 #include "ticket.hpp"
-#include "range.hpp"
 
 using namespace std;
 
