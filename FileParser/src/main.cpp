@@ -36,6 +36,7 @@ int main(int argc, char* argv[])
 
         return 0;
     }
+    
     std::ifstream stream(argv[1]);
     pipeline.Handle(stream);
     pipeline.Report(cout);

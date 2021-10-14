@@ -38,6 +38,7 @@ void Pipeline::BuildCounter(
     char* filepath, 
     char* string_to_count)
 {
+    //TODO: delete filepath arg
     pipeline.PushHandler(make_shared<SourceHandler>());
     pipeline.PushHandler(make_shared<CounterHandler>(string_to_count));
 }
@@ -52,6 +53,9 @@ void Pipeline::BuildReplacer(
     pipeline.PushHandler(make_shared<CounterHandler>(string_to_find));
     pipeline.PushHandler(
         make_shared<ReplaceHandler>(string_to_find, string_to_replace)
+    );
+    pipeline.PushHandler(
+        make_shared<ReplaceHandler>("apple", "shark")
     );
     pipeline.PushHandler(make_shared<FileSinkHandler>(filepath));
     pipeline.PushHandler(make_shared<SinkHandler>(cout));

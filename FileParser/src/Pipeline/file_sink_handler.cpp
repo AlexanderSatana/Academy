@@ -24,6 +24,7 @@ FileSinkHandler::~FileSinkHandler()
 }
 
 void FileSinkHandler::Init() {
+    //TODO: check if file exists
     m_filename_duplicate = m_filename + ".copy";
     m_ofstream = std::ofstream(m_filename_duplicate);
     if (m_ofstream.fail())

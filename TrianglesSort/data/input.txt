@@ -1,0 +1,5 @@
+some_triangle, 10, 10, 14
+awesome_variable 1, 1, 1
+asdf 
+asf f f f 
+777, 777, 777, 777
