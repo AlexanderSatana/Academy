@@ -1,17 +1,35 @@
 #pragma once
 #include <string>
+#include <set>
 #include <memory>
-#include <any>
 #include <sstream>
 #include <iostream>
 
-class Object
+using namespace std;
+
+
+class IObject
 {
     public:
-        Object() = default;
-        virtual ~Object() = default;
-        virtual const std::string ToString() const = 0;
-        virtual const float Hash() const = 0;
-        const bool operator<(const Object& other) const;
+        IObject() = default;
+        virtual ~IObject() = default;
+        virtual std::string ToString() const = 0;
+        virtual float Hash() const = 0;
+        const bool operator<(const IObject& other) const;
 };
 
+struct Compare 
+{
+    bool operator() (
+        const unique_ptr<IObject>&first, 
+        const unique_ptr<IObject>&second
+        ) const
+    {
+        return *first < *second;
+    }
+};
+
+using multiset_of_objects = multiset<
+        unique_ptr<IObject>, 
+        Compare
+    >;

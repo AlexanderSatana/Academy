@@ -9,9 +9,9 @@ class StandartInputReader : public ISourceReader
     public:
         StandartInputReader() {};
         ~StandartInputReader() = default;
-        const bool Ready() const override;
-        void Fill(std::vector<std::unique_ptr<Object>>& objects) const override;
+        bool Ready() const override;
+        void Fill(multiset_of_objects& objects) const override;
 
     private:
-        const bool AskToContinue() const;
+        bool AskToContinue() const;
 };

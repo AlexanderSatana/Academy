@@ -1,11 +1,11 @@
 #include <iostream>
 #include "standart_output_drawer.hpp"
 
-void StandartOutputDrawer::Draw(const std::vector<std::unique_ptr<Object>>& objects) const 
+void StandartOutputDrawer::Draw(const multiset_of_objects& objects) const 
 {
-    for (auto& object: objects) 
+    for (auto r_it = objects.rbegin(); r_it!=objects.rend(); r_it++) 
     {
-        std::cout << object.get()->ToString() << std::endl;
+        std::cout << r_it->get()->ToString() << std::endl;
     }
 }
 

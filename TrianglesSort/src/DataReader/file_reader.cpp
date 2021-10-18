@@ -12,7 +12,7 @@ FileReader::FileReader(const std::string& filename)
     m_input_file_stream = std::ifstream(filename);
 }
 
-const bool FileReader::Ready() const 
+bool FileReader::Ready() const 
 {
     return m_input_file_stream.is_open();
 }
@@ -22,7 +22,7 @@ FileReader::~FileReader()
     m_input_file_stream.close();
 }
 
-void FileReader::Fill(std::vector<std::unique_ptr<Object>>& objects) const
+void FileReader::Fill(multiset_of_objects& objects) const
 {
     std::string name;
     float a, b, c;
@@ -34,7 +34,7 @@ void FileReader::Fill(std::vector<std::unique_ptr<Object>>& objects) const
         bool params_are_valid = CheckForTriangleParameters(name, a, b, c);
         if (parsed_successfully && params_are_valid) 
         {
-            objects.push_back(std::make_unique<Triangle>(name, a, b, c));
+            objects.insert(make_unique<Triangle>(name, a, b, c));
         }
     }
 }

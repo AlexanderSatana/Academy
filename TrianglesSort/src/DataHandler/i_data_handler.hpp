@@ -1,10 +1,13 @@
 #pragma once
-#include <vector>
+#include <map>
 #include "../Object/object.hpp"
+
+using namespace std;
+
 
 class IDataHandler
 {
     public:
         ~IDataHandler() = default;
-        virtual void Handle(std::vector<std::unique_ptr<Object>>& objects) const = 0;
+        virtual void Handle(multiset_of_objects& objects) const = 0;
 };

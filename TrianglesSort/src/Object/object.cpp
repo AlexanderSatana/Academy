@@ -1,7 +1,7 @@
 #include <sstream>
 #include "object.hpp"
 
-const bool Object::operator<(const Object& other) const 
+const bool IObject::operator<(const IObject& other) const 
 {
     return this->Hash() < other.Hash();
 }

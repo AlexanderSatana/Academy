@@ -1,18 +1,17 @@
 #include <iostream>
 #include <memory>
+#include "Utils/print_usage.hpp"
 #include "DataReader/file_reader.hpp"
 #include "DataReader/standart_input_reader.hpp"
 #include "DataReader/i_source_reader.hpp"
 #include "DataHandler/i_data_handler.hpp"
-#include "DataHandler/data_sorter.hpp"
 #include "DataDrawer/i_data_drawer.hpp"
 #include "DataDrawer/standart_output_drawer.hpp"
 
 
-void main(int argc, char* argv[]) 
+int main(int argc, char* argv[]) 
 {
     std::unique_ptr<ISourceReader> source_reader;
-    std::unique_ptr<IDataHandler> data_handler;
     std::unique_ptr<IDataDrawer> data_drawer;
 
     switch(argc) 
@@ -20,6 +19,7 @@ void main(int argc, char* argv[])
         case 1:
         {
             source_reader = std::make_unique<StandartInputReader>();
+
             break;
         }
         case 2:
@@ -31,26 +31,21 @@ void main(int argc, char* argv[])
                             << "\" not found." 
                             << std::endl;
 
-                return;
+                return 0;
             }
+
             break;
         }
         default:
         {
-            std::cerr   << "Usage:" << std::endl
-                        << argv[0] << " [ input-file ]" << std::endl
-                        << "where:"
-                        << "\n\tinput-file - file to handle"
-                        << std::endl;
+            PrintUsage(argv[0]);
 
-            return;
+            return 0;
         }
     }
-    data_handler = std::make_unique<DataSorter>();
     data_drawer = std::make_unique<StandartOutputDrawer>();
-
-    std::vector<std::unique_ptr<Object>> objects;
+    multiset_of_objects objects;
+    
     source_reader.get()->Fill(objects);
-    data_handler.get()->Handle(objects);
     data_drawer.get()->Draw(objects);
 }

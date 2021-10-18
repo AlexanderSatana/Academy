@@ -8,12 +8,12 @@
 #include "../Utils/string_parser.hpp"
 
 
-const bool StandartInputReader::Ready() const 
+bool StandartInputReader::Ready() const 
 {
     return true;
 }
 
-void StandartInputReader::Fill(std::vector<std::unique_ptr<Object>>& objects) const
+void StandartInputReader::Fill(multiset_of_objects& objects) const
 {
     std::string line;
     std::string name;
@@ -30,7 +30,7 @@ void StandartInputReader::Fill(std::vector<std::unique_ptr<Object>>& objects) co
         bool params_are_valid = CheckForTriangleParameters(name, a, b, c);
         if (parsed_successfully && params_are_valid) 
         {
-            objects.push_back(std::make_unique<Triangle>(name, a, b, c));
+            objects.insert(make_unique<Triangle>(name, a, b, c));
         } else
         {
             std::cout << "Invalid input." << std::endl;
@@ -40,7 +40,7 @@ void StandartInputReader::Fill(std::vector<std::unique_ptr<Object>>& objects) co
     } while(answer_succeded);
 }
 
-const bool StandartInputReader::AskToContinue() const
+bool StandartInputReader::AskToContinue() const
 {
     std::string answer;   
     std::cout << "Whould you like to continue" << std::endl;

@@ -3,10 +3,12 @@
 #include <memory>
 #include "../Object/object.hpp"
 
+using namespace std;
+
 class ISourceReader 
 {
     public:
         virtual ~ISourceReader() = default;
-        virtual const bool Ready() const = 0;
-        virtual void Fill(std::vector<std::unique_ptr<Object>>& objects) const = 0;
+        virtual bool Ready() const = 0;
+        virtual void Fill(multiset_of_objects& objects) const = 0;
 };

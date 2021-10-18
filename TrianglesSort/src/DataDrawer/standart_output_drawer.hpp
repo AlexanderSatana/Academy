@@ -5,5 +5,5 @@
 class StandartOutputDrawer : public IDataDrawer
 {
     public:
-        void Draw(const std::vector<std::unique_ptr<Object>>& objects) const override;
+        void Draw(const multiset_of_objects& objects) const override;
 };

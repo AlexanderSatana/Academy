@@ -10,8 +10,8 @@ class FileReader : public ISourceReader
         FileReader() = default;
         FileReader(const std::string& filename);
         ~FileReader();
-        const bool Ready() const override;
-        void Fill(std::vector<std::unique_ptr<Object>>& objects) const override;
+        bool Ready() const override;
+        void Fill(multiset_of_objects& objects) const override;
 
     private:
         mutable std::ifstream m_input_file_stream;

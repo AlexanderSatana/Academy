@@ -8,17 +8,17 @@ Triangle::Triangle(std::string name, float a, float b, float c)
     m_square = std::sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
-const float Triangle::Hash() const 
+float Triangle::Hash() const 
 {
     return GetSquare();
 }
 
-const float Triangle::GetSquare() const
+float Triangle::GetSquare() const
 {
     return m_square;
 }
 
-const std::string Triangle::ToString() const
+std::string Triangle::ToString() const
 {
     std::ostringstream name_to_return;
     name_to_return  << "[Triangle "

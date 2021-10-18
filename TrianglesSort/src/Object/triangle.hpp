@@ -3,17 +3,17 @@
 #include "object.hpp"
 
 
-class Triangle : public Object
+class Triangle : public IObject
 {
     public:
         Triangle() = delete;
         Triangle(std::string,  float, float, float);
         ~Triangle() = default;
-        const bool operator<(const Object& other) const ;
-        const bool operator<(const Triangle& other) const;
-        const float Hash() const override;
-        const float GetSquare() const;
-        const std::string ToString() const override;
+        bool operator<(const IObject& other) const ;
+        bool operator<(const Triangle& other) const;
+        float Hash() const override;
+        float GetSquare() const;
+        std::string ToString() const override;
         
     private:
         float   m_a;
