@@ -1,25 +1,28 @@
 #include <iostream>
 #include <fstream>
-#include <list>
-#include "Pipeline/pipeline.hpp"
+#include "Pipeline/pipeline_builder.hpp"
+#include "Pipeline/counter_builder.hpp"
+#include "Pipeline/replace_builder.hpp"
 #include "Utils/print_usage.hpp"
 
 using namespace std;
 
+
 int main(int argc, char* argv[]) 
 {
-    Pipeline pipeline;
+    unique_ptr<IPipelineBuilder> builder;
+    
     switch (argc) 
     {
         case 3: 
         {
-            Pipeline::BuildCounter(pipeline, argv[1], argv[2]);
+            builder = make_unique<CounterBuilder>(argv[1], argv[2]);
 
             break;
         }
         case 4:
         {
-            Pipeline::BuildReplacer(pipeline, argv[1], argv[2], argv[3]);
+            builder = make_unique<ReplaceBuilder>(argv[1], argv[2], argv[3]);
 
             break;
         }
@@ -30,15 +33,16 @@ int main(int argc, char* argv[])
             return 0;
         }
     }
-    if (not pipeline.BuildSucceded())
+    auto pipeline = builder.get()->Build();
+    if (not pipeline.get()->BuildSucceded())
     {
-        cout << pipeline.Error() << endl;
+        cout << pipeline.get()->Error() << endl;
 
         return 0;
-    }
-    
+    }  
+
     std::ifstream stream(argv[1]);
-    pipeline.Handle(stream);
-    pipeline.Report(cout);
+    pipeline.get()->Handle(stream);
+    pipeline.get()->Report(cout);
     stream.close();
 }

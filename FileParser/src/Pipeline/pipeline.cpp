@@ -33,34 +33,6 @@ void Pipeline::Report(std::ostream& stream) const
     }
 }
 
-void Pipeline::BuildCounter(
-    Pipeline& pipeline,
-    char* filepath, 
-    char* string_to_count)
-{
-    //TODO: delete filepath arg
-    pipeline.PushHandler(make_shared<SourceHandler>());
-    pipeline.PushHandler(make_shared<CounterHandler>(string_to_count));
-}
-
-void Pipeline::BuildReplacer(
-    Pipeline& pipeline,
-    char* filepath, 
-    char* string_to_find, 
-    char* string_to_replace)
-{
-    pipeline.PushHandler(make_shared<SourceHandler>());
-    pipeline.PushHandler(make_shared<CounterHandler>(string_to_find));
-    pipeline.PushHandler(
-        make_shared<ReplaceHandler>(string_to_find, string_to_replace)
-    );
-    pipeline.PushHandler(
-        make_shared<ReplaceHandler>("apple", "shark")
-    );
-    pipeline.PushHandler(make_shared<FileSinkHandler>(filepath));
-    pipeline.PushHandler(make_shared<SinkHandler>(cout));
-}
-
 const bool Pipeline::BuildSucceded() const 
 {
     return std::all_of(

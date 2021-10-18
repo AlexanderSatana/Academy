@@ -3,16 +3,22 @@
 #![allow(improper_ctypes)]                                                                                         
 #![allow(non_snake_case)]                                                                                          
 #![allow(unused)]
+
+
+
 #[cfg(test)]
 mod tests {
-    //include!("bindings.rs");
     mod bindings;
+
+    use std::time::{Duration, Instant};
     #[test]
     fn it_works() {
+        let start = Instant::now();
         unsafe
         {
-            //let pipeline: bindings::Pipeline = Pipeline
+            bindings::main_();
         };
-        assert_eq!(2 + 2, 4);
+        let duration = start.elapsed();
+        println!("Time elapsed in expensive_function() is: {:?}", duration);
     }
 }
