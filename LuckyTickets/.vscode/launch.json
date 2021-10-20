@@ -8,14 +8,14 @@
             "name": "clang++ - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/devil/Academy/FileParser/bin/main",
-            "args": ["data/war_and_peace.txt", "any", "swap"],
+            "program": "/home/devil/Academy/LuckyTickets/bin/main",
+            "args": [],
             "stopAtEntry": false,
-            "cwd": "/home/devil/Academy/FileParser",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
-            "internalConsoleOptions": "openOnSessionStart",
             "MIMode": "gdb",
+            "internalConsoleOptions": "openOnSessionStart",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -23,6 +23,7 @@
                     "ignoreFailures": true
                 }
             ],
+            "preLaunchTask": "C/C++: clang++ build active file",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]

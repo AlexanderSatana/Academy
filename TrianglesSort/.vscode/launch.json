@@ -5,16 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "clang++ - Build and debug active file",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/devil/Academy/FileParser/bin/main",
-            "args": ["data/war_and_peace.txt", "any", "swap"],
+            "args": [],
             "stopAtEntry": false,
-            "cwd": "/home/devil/Academy/FileParser",
+            "cwd": "/home/devil/Academy/TrianglesSort",
             "environment": [],
+            "program": "/home/devil/Academy/TrianglesSort/bin/main",
             "externalConsole": false,
-            "internalConsoleOptions": "openOnSessionStart",
             "MIMode": "gdb",
             "setupCommands": [
                 {
@@ -22,8 +21,8 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ],
-            "miDebuggerPath": "/usr/bin/gdb"
+            ]
         }
     ]
 }
+
