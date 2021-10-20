@@ -1,0 +1,36 @@
+cargo:rerun-if-changed=src/wrapper.hpp
+cargo:rerun-if-changed=src/adapter_cpp/natural_sequence.cpp
+TARGET = Some("x86_64-unknown-linux-gnu")
+OPT_LEVEL = Some("0")
+HOST = Some("x86_64-unknown-linux-gnu")
+CXX_x86_64-unknown-linux-gnu = None
+CXX_x86_64_unknown_linux_gnu = None
+HOST_CXX = None
+CXX = None
+CXXFLAGS_x86_64-unknown-linux-gnu = None
+CXXFLAGS_x86_64_unknown_linux_gnu = None
+HOST_CXXFLAGS = None
+CXXFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some("true")
+CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
+running: "c++" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-Wall" "-Wextra" "-o" "/home/devil/Academy/NumericSequence/test/sequence/target/debug/build/sequence-a982cbc5f3503f0c/out/src/adapter_cpp/natural_sequence.o" "-c" "src/adapter_cpp/natural_sequence.cpp"
+exit status: 0
+running: "c++" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-Wall" "-Wextra" "-o" "/home/devil/Academy/NumericSequence/test/sequence/target/debug/build/sequence-a982cbc5f3503f0c/out/../../src/Sequence/natural_sequence.o" "-c" "../../src/Sequence/natural_sequence.cpp"
+exit status: 0
+AR_x86_64-unknown-linux-gnu = None
+AR_x86_64_unknown_linux_gnu = None
+HOST_AR = None
+AR = None
+running: "ar" "cq" "/home/devil/Academy/NumericSequence/test/sequence/target/debug/build/sequence-a982cbc5f3503f0c/out/libcppprog.a" "/home/devil/Academy/NumericSequence/test/sequence/target/debug/build/sequence-a982cbc5f3503f0c/out/src/adapter_cpp/natural_sequence.o" "/home/devil/Academy/NumericSequence/test/sequence/target/debug/build/sequence-a982cbc5f3503f0c/out/../../src/Sequence/natural_sequence.o"
+exit status: 0
+running: "ar" "s" "/home/devil/Academy/NumericSequence/test/sequence/target/debug/build/sequence-a982cbc5f3503f0c/out/libcppprog.a"
+exit status: 0
+cargo:rustc-link-lib=static=cppprog
+cargo:rustc-link-search=native=/home/devil/Academy/NumericSequence/test/sequence/target/debug/build/sequence-a982cbc5f3503f0c/out
+CXXSTDLIB_x86_64-unknown-linux-gnu = None
+CXXSTDLIB_x86_64_unknown_linux_gnu = None
+HOST_CXXSTDLIB = None
+CXXSTDLIB = None
+cargo:rustc-link-lib=stdc++
+cargo:rerun-if-changed=src/adapter_cpp/natural_sequence.hpp

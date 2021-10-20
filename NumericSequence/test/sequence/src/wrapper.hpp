@@ -1,0 +1,1 @@
+#include "adapter_cpp/natural_sequence.hpp"
