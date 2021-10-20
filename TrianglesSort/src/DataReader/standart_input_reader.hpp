@@ -13,5 +13,6 @@ class StandartInputReader : public ISourceReader
         void Fill(multiset_of_objects& objects) const override;
 
     private:
+        void AskForEntities() const;
         bool AskToContinue() const;
 };

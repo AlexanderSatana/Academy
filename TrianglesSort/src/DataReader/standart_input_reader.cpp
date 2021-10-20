@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include "../Object/object.hpp"
+#include "../Object/comparable.hpp"
 #include "../Object/triangle.hpp"
 #include "../Utils/string_parser.hpp"
 
@@ -22,8 +22,7 @@ void StandartInputReader::Fill(multiset_of_objects& objects) const
 
     do 
     {
-        std::cout << "Enter triangle name, side_a, side_b, side_c" 
-                  << std::endl;
+        AskForEntities() ;
         std::getline(std::cin, line);     
         std::istringstream stream(line);
         bool parsed_successfully = ParseFromString<std::string, float, float, float>(stream, ',', name, a, b, c);
@@ -38,6 +37,12 @@ void StandartInputReader::Fill(multiset_of_objects& objects) const
 
         answer_succeded = AskToContinue();
     } while(answer_succeded);
+}
+
+void StandartInputReader::AskForEntities() const
+{
+    std::cout   << "Enter triangle name, side_a, side_b, side_c" 
+                << std::endl;
 }
 
 bool StandartInputReader::AskToContinue() const

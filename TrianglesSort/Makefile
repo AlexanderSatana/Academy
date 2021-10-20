@@ -13,7 +13,7 @@ run: clean all
 	clear
 	./$(BIN)/$(EXECUTABLE)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/main.cpp $(SRC)/DataReader/*.cpp $(SRC)/DataHandler/*.cpp $(SRC)/DataDrawer/*.cpp $(SRC)/Utils/*.cpp $(SRC)/Object/*.cpp 
+$(BIN)/$(EXECUTABLE): $(SRC)/main.cpp $(SRC)/*/*.cpp 
 	$(CXX) $(CXX_FLAGS) -I$(SRC) $^ -o $@ $(LIBRARIES)
 
 clean:

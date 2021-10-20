@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "../Object/object.hpp"
+#include "../Object/comparable.hpp"
 
 using namespace std;
 

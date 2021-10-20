@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "../Object/object.hpp"
+#include "../Object/comparable.hpp"
 
 using namespace std;
 

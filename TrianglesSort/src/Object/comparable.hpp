@@ -8,21 +8,21 @@
 using namespace std;
 
 
-class IObject
+class IComparable
 {
     public:
-        IObject() = default;
-        virtual ~IObject() = default;
+        IComparable() = default;
+        virtual ~IComparable() = default;
         virtual std::string ToString() const = 0;
         virtual float Hash() const = 0;
-        const bool operator<(const IObject& other) const;
+        const bool operator<(const IComparable& other) const;
 };
 
 struct Compare 
 {
     bool operator() (
-        const unique_ptr<IObject>&first, 
-        const unique_ptr<IObject>&second
+        const unique_ptr<IComparable>&first, 
+        const unique_ptr<IComparable>&second
         ) const
     {
         return *first < *second;
@@ -30,6 +30,6 @@ struct Compare
 };
 
 using multiset_of_objects = multiset<
-        unique_ptr<IObject>, 
+        unique_ptr<IComparable>, 
         Compare
     >;

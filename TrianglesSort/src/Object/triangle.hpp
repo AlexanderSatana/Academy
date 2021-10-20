@@ -1,15 +1,15 @@
 #pragma once
 #include <string>
-#include "object.hpp"
+#include "comparable.hpp"
 
 
-class Triangle : public IObject
+class Triangle : public IComparable
 {
     public:
         Triangle() = delete;
         Triangle(std::string,  float, float, float);
         ~Triangle() = default;
-        bool operator<(const IObject& other) const ;
+        bool operator<(const IComparable& other) const ;
         bool operator<(const Triangle& other) const;
         float Hash() const override;
         float GetSquare() const;

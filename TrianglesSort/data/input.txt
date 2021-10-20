@@ -3,3 +3,9 @@ awesome_variable 1, 1, 1
 asdf 
 asf f f f 
 777, 777, 777, 777
+bad_triangle, -1, 10, 10
+other_bad, 0, 0, 1
+2_sides, 1, 10
+
+middle, 20, 20, 29
+middle, 20, 20, 29
