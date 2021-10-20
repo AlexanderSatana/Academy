@@ -3,6 +3,7 @@
 #include <sstream>
 #include <iostream>
 #include <stdio.h>
+#include <random>
 #include "file_sink_handler.hpp"
 
 using namespace std;
@@ -25,7 +26,7 @@ FileSinkHandler::~FileSinkHandler()
 
 void FileSinkHandler::Init() {
     //TODO: check if file exists
-    m_filename_duplicate = m_filename + ".copy";
+    GenerateBackup();
     m_ofstream = std::ofstream(m_filename_duplicate);
     if (m_ofstream.fail())
     {
@@ -57,8 +58,39 @@ void FileSinkHandler::Finalize()
     std::rename(m_filename_duplicate.c_str(), m_filename.c_str());
 }
 
-const bool FileSinkHandler::Ready() const
+bool FileSinkHandler::Ready() const
 {
     //return m_ofstream.is_open() and not m_ofstream.fail() and not m_ofstream.failbit;
     return not m_ofstream.fail();
+}
+
+bool FileSinkHandler::FileExists(const string& filepath) const
+{
+    ifstream _fstream(filepath);
+    return _fstream.good();
+}
+
+ void FileSinkHandler::GenerateBackup()
+ {
+     do 
+     {
+         m_filename_duplicate = m_filename + ".copy_" + GetRandomString();
+     } while (FileExists(m_filename_duplicate));
+ }
+
+string FileSinkHandler::GetRandomString() const
+{
+    const uint8_t num_of_chars = 4;
+    string alphabet =   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        "abcdefghijklmnopqrstuvwxyz";
+    string tmp_s;
+    random_device rd;
+
+    tmp_s.reserve(num_of_chars);
+    for (auto i = 0; i < num_of_chars; ++i)
+    {
+        tmp_s += alphabet[rd() % sizeof(alphabet)];
+    }
+
+    return tmp_s;
 }

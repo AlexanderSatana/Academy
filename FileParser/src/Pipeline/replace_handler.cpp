@@ -15,9 +15,7 @@ void ReplaceHandler::Handle(std::istream& stream) const
 {
     stream.seekg(std::ios_base::beg);
     std::istreambuf_iterator<char> start{stream};
-    std::istreambuf_iterator<char> end;
-    std::string str_ = m_string_to_find + '\n';
-    if (std::equal(start, end, str_.begin()))
+    if (std::equal(m_string_to_find.begin(), m_string_to_find.end(), start))
     {
         std::istringstream next_stream(m_string_to_replace);
         m_next_handler.get()->Handle(next_stream);

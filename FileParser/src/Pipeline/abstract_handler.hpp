@@ -8,15 +8,15 @@ class AbstractHandler : public IHandler
         AbstractHandler();
         virtual ~AbstractHandler();
         virtual void Init() override;
-        virtual void SetNextHandler(std::shared_ptr<IHandler> next) override;
-        virtual void Handle(std::istream& stream) const override;
-        virtual void Report(std::ostream& stream) const override;
-        virtual const bool Ready() const override;
-        virtual const std::string Error() const override;
+        virtual void SetNextHandler(shared_ptr<IHandler> next) override;
+        virtual void Handle(istream& stream) const override;
+        virtual void Report(ostream& stream) const override;
+        virtual bool Ready() const override;
+        virtual string Error() const override;
         virtual void Finalize() override;
 
     protected:
-        virtual std::string GetReport() const override;
-        std::shared_ptr<IHandler> m_next_handler;
-        std::ostringstream m_error_stream;
+        virtual string GetReport() const override;
+        shared_ptr<IHandler> m_next_handler;
+        ostringstream m_error_stream;
 };

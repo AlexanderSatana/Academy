@@ -33,17 +33,17 @@ void AbstractHandler::Report(std::ostream& stream) const
 
 }
 
-const bool AbstractHandler::Ready() const 
+bool AbstractHandler::Ready() const 
 {
     return true;
 }
 
-std::string AbstractHandler::GetReport() const 
+string AbstractHandler::GetReport() const 
 {
     return "";
 }
 
-const std::string AbstractHandler::Error() const {
+string AbstractHandler::Error() const {
     return m_error_stream.str();
 }
 

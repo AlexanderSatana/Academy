@@ -9,10 +9,13 @@ class FileSinkHandler : public AbstractHandler
         ~FileSinkHandler();
         void Init() override;
         void Handle(std::istream&) const override;
-        const bool Ready() const override;
+        bool Ready() const override;
         void Finalize() override;
 
     private:
+        bool FileExists(const string& filepath) const;
+        void GenerateBackup();
+        string GetRandomString() const;
         std::string m_filename;
         std::string m_filename_duplicate;
         mutable std::ofstream m_ofstream;
